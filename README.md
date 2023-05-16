@@ -1,24 +1,58 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column              | Type    | Options                   |
+| ------------------- | ------- | ------------------------- |
+| nickame             | string  | null: false               |
+| email               | string  | null: false, unique: true |
+| encrypted_password  | string  | null: false               |
+| name                | string  | null: false               |
+| name(kana)          | string  | null: false               |
+| date-of-birth       | integer | null: false               |
 
-Things you may want to cover:
+- has_many :items
+- has_many :purchases
 
-* Ruby version
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| seller          | references | null: false, foreign_key: true |
+| product-name    | string     | null: false                    |
+| description     | text       | null: false                    |
+| category        | string     | null: false                    | 
+| condition       | string     | null: false                    |
+| price           | integer    | null: false                    | 
+| shipping-charge | inetger    | null: false                    |
+| shipping-origin | string     | null: false                    |
+| derivary-days   | string     | null: false                    |
 
-* Database creation
+- belongs_to :users
+- belongs_to :purchases
+- has_one_attached :image
 
-* Database initialization
+## purchases テーブル
+| Column          | Type       |Options                         |
+| --------------- | ---------- |------------------------------- |
+| buyer           | references | null: false, foreign_key: true |
+| product-name    | string     | null: false                    |
+| price           | integer    | null: false                    |
+| shipping-charge | integer    | null: false                    |
 
-* How to run the test suite
+- belongs_to :users
+- belongs_to :items
+- has_one :sends
+- has_one_attached :product-image
 
-* Services (job queues, cache servers, search engines, etc.)
+## sends テーブル
+| Column             | Type       |Options                         |
+| ------------------ | ---------- | ------------------------------ |
+| purchase           | references | null: false, foreign_key: true |
+| post-code          | integer    | null: false                    |
+| prefectures        | string     | null: false                    |
+| mayor-ward-village | string     | null: false                    |
+| address            | integer    | null: false                    |
+| billding           | string     | null: false                    |
+| telephone-number   | integer    | null: false                    |
 
-* Deployment instructions
-
-* ...
+- belongs_to:purchases
