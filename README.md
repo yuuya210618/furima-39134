@@ -2,7 +2,7 @@
 
 | Column              | Type    | Options                   |
 | ------------------- | ------- | ------------------------- |
-| nickame             | string  | null: false               |
+| nickname            | string  | null: false               |
 | email               | string  | null: false, unique: true |
 | encrypted_password  | string  | null: false               |
 | last_name           | string  | null: false               |
@@ -25,9 +25,9 @@
 | category_id        | integer    | null: false                    | 
 | condition_id       | integer    | null: false                    |
 | price              | integer    | null: false                    | 
-| shipping_charge_id | inetger    | null: false                    |
+| shipping_charge_id | integer    | null: false                    |
 | shipping_origin_id | integer    | null: false                    |
-| derivary_day _id   | integer    | null: false                    |
+| derivary_day_id    | integer    | null: false                    |
 
 - belongs_to :user
 - has_one :purchase
@@ -47,9 +47,9 @@
 | ------------------ | ---------- | ------------------------------ |
 | purchase           | references | null: false, foreign_key: true |
 | post_code          | string     | null: false                    |
-| shipping_origin_id | string     | null: false                    |
+| shipping_origin_id | integer    | null: false                    |
 | mayor_ward_village | string     | null: false                    |
-| address            | integer    | null: false                    |
+| address            | string     | null: false                    |
 | billding           | string     | 
 | telephone_number   | string     | null: false                    |
 
