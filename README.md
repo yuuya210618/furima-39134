@@ -50,7 +50,7 @@
 | shipping_origin_id | integer    | null: false                    |
 | mayor_ward_village | string     | null: false                    |
 | address            | string     | null: false                    |
-| billding           | string     | 
+| building           | string     | 
 | telephone_number   | string     | null: false                    |
 
 - belongs_to:purchase
