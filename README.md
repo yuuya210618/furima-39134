@@ -9,7 +9,7 @@
 | first_name          | string  | null: false               |
 | last_name_kana      | string  | null: false               |
 | first_name_kana     | string  | null: false               |
-| date_of_birth       | date    | null: false               |
+| birth               | date    | null: false               |
 
 - has_many :items
 - has_many :purchases
@@ -27,7 +27,7 @@
 | price              | integer    | null: false                    | 
 | shipping_charge_id | integer    | null: false                    |
 | shipping_origin_id | integer    | null: false                    |
-| derivary_day_id    | integer    | null: false                    |
+| derivary_id        | integer    | null: false                    |
 
 - belongs_to :user
 - has_one :purchase
@@ -40,9 +40,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :send
+- has_one :shipping
 
-## sends テーブル
+## shippings テーブル
 | Column             | Type       |Options                         |
 | ------------------ | ---------- | ------------------------------ |
 | purchase           | references | null: false, foreign_key: true |
