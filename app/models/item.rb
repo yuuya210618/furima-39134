@@ -8,16 +8,17 @@ class Item < ApplicationRecord
   belongs_to :shipping_origin
   belongs_to :derivary
 
-  validates :product_name, :string, presence: true
-  validates :description, :integer, presence: true
-  validates :category, :integer, presence: true
-  validates :condition, :integer, presence: true
-  validates :price, :integer, presence: true
-  validates :shipping_charge, :integer, presence: true
-  validates :shipping_origin, :integer, presence: true
-  validates :derivary, :integer, presence: true
+  validates :product_name, presence: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :condition, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+             format: { with: /\A[0-9]+\z/ }
+  validates :shipping_charge, presence: true
+  validates :shipping_origin, presence: true
+  validates :derivary, presence: true
 
-  validates :categiry_id, numericality: { other_than: 1 } 
+  validates :category_id, numericality: { other_than: 1 } 
   validates :condition_id, numericality: { other_than: 1 } 
   validates :shipping_charge_id, numericality: { other_than: 1 } 
   validates :shipping_origin_id, numericality: { other_than: 1 } 
