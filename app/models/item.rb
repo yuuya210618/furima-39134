@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  validates :image, presence: true, unless: :was_attached?
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
@@ -12,7 +14,7 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
   validates :condition, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
              format: { with: /\A[0-9]+\z/ }
   validates :shipping_charge, presence: true
   validates :shipping_origin, presence: true
@@ -24,4 +26,7 @@ class Item < ApplicationRecord
   validates :shipping_origin_id, numericality: { other_than: 1 } 
   validates :derivary_id, numericality: { other_than: 1 } 
 
+  def was_attached?
+    self.image.attached?
+  end
 end
