@@ -15,18 +15,18 @@ class Item < ApplicationRecord
   validates :category, presence: true
   validates :condition, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-             format: { with: /\A[0-9]+\z/ }
+                    format: { with: /\A[0-9]+\z/ }
   validates :shipping_charge, presence: true
   validates :shipping_origin, presence: true
   validates :derivary, presence: true
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :condition_id, numericality: { other_than: 1 } 
-  validates :shipping_charge_id, numericality: { other_than: 1 } 
-  validates :shipping_origin_id, numericality: { other_than: 1 } 
-  validates :derivary_id, numericality: { other_than: 1 } 
+  validates :category_id, numericality: { other_than: 1 }
+  validates :condition_id, numericality: { other_than: 1 }
+  validates :shipping_charge_id, numericality: { other_than: 1 }
+  validates :shipping_origin_id, numericality: { other_than: 1 }
+  validates :derivary_id, numericality: { other_than: 1 }
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
 end
