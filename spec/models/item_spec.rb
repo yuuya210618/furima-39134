@@ -29,34 +29,34 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it '商品カテゴリーがないと登録されない' do
-        @item.category = nil
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it '商品状態がないと登録されない' do
-        @item.condition = nil
+        @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank", 'Condition is not a number')
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
       it '配送料負担情報がないと登録されない' do
-        @item.shipping_charge = nil
+        @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge can't be blank", 'Shipping charge is not a number')
+        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
       end
       it '発送元地域情報がないと登録されない' do
-        @item.shipping_origin = nil
+        @item.shipping_origin_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin can't be blank", 'Shipping origin is not a number')
+        expect(@item.errors.full_messages).to include("Shipping origin must be other than 1")
       end
       it '発送日数情報がないと登録されない' do
-        @item.derivary = nil
+        @item.derivary_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Derivary can't be blank", 'Derivary is not a number')
+        expect(@item.errors.full_messages).to include("Derivary must be other than 1")
       end
       it '価格情報がないと登録されない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is not a number', 'Price is invalid')
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格は半角数値でないと登録されない' do
         @item.price = '１０００'

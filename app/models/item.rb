@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
   validates :condition, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
                     format: { with: /\A[0-9]+\z/ }
   validates :shipping_charge, presence: true
   validates :shipping_origin, presence: true
