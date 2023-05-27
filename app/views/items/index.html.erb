@@ -127,6 +127,7 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
+    <% if @items.present? %>
     <% @items.each do |item| %>
       <li class='list'>
         <%= link_to "#" do %>
@@ -146,7 +147,7 @@
             <%= item.product_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.shipping_charge_id %></span>
+            <span><%= item.price %>円<br><%= item.shipping_charge %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -156,9 +157,7 @@
         <% end %>
       </li>
     
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+     <% else %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -174,13 +173,12 @@
             </div>
           </div>
         </div>
-        <% end %>
+      <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+    <% end %>
     </ul>
   </div>
-  
+
 </div>
 <%= link_to new_item_path, class: 'purchase-btn' do %>
   <span class='purchase-btn-text'>出品する</span>
