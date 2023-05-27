@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
       it '商品カテゴリーがないと登録されない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it '商品状態がないと登録されない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
       it '配送料負担情報がないと登録されない' do
         @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
       end
       it '発送元地域情報がないと登録されない' do
         @item.shipping_origin_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping origin must be other than 1')
       end
       it '発送日数情報がないと登録されない' do
         @item.derivary_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Derivary must be other than 1")
+        expect(@item.errors.full_messages).to include('Derivary must be other than 1')
       end
       it '価格情報がないと登録されない' do
         @item.price = nil
