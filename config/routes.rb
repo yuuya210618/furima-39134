@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'items/index'
   root to: "items#index"
   resources :items do
-    resources :purchases 
+    resources :purchases
   end
 end
