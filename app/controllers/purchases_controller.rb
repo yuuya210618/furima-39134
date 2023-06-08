@@ -13,11 +13,11 @@ class PurchasesController < ApplicationController
     amount = @item.price
     @order = Order.new(purchase_params)
     if @order.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
-        amount: amount,  
-        card: purchase_params[:token],    
-        currency: 'jpy'                 
+        amount: amount,
+        card: purchase_params[:token],
+        currency: 'jpy'
       )
       @order.save
       redirect_to root_path
@@ -35,5 +35,4 @@ class PurchasesController < ApplicationController
                  user_id: current_user.id,
                  item_id: params[:item_id])
   end
-
 end
