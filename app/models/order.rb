@@ -18,6 +18,6 @@ class Order
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
     shipping = Shipping.create(post_code: post_code, shipping_origin_id: shipping_origin_id,
                                mayor_ward_village: mayor_ward_village, address: address, building: building, telephone_number: telephone_number,
-                               purchase: purchase)
+                               purchase_id: purchase.id)
   end
 end
