@@ -14,12 +14,7 @@ class PurchasesController < ApplicationController
     amount = @item.price
     @order = Order.new(purchase_params)
     if @order.valid?
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-      Payjp::Charge.create(
-        amount: amount,
-        card: purchase_params[:token],
-        currency: 'jpy'
-      )
+      pay_item(amount)
       @order.save
       redirect_to root_path
     else
@@ -39,5 +34,14 @@ class PurchasesController < ApplicationController
           .merge(token: params[:token],
                  user_id: current_user.id,
                  item_id: params[:item_id])
+  end
+
+  def pay_item(amount)
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: amount,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
   end
 end

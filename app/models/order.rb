@@ -7,7 +7,7 @@ class Order
     validates :post_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :mayor_ward_village
     validates :address
-    validates :telephone_number, format: { with: /\d{10,11}/ }, length: { maximum: 11 }
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/ }, length: { maximum: 11 }
     validates :token
     validates :user_id
     validates :item_id
