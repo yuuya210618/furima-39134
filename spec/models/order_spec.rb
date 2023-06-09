@@ -30,6 +30,11 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
+      it '郵便番号は『３桁ハイフン４桁』ハイフンがないと保存できない' do
+        @order.post_code = '0000000'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
+      end
       it '都道府県が空だと購入できない' do
         @order.shipping_origin_id = 1
         @order.valid?
